@@ -40,13 +40,13 @@ python3 -m http.server 8000
 
 ## 怎么用 Kiro 做的
 
-> <!-- TODO（作者本人填写）：把你真实的 Kiro 用法写在这里，1–2 段即可。
-> 例如：用了 Kiro IDE 还是 CLI / Kiro Crew？spec 是怎么写的？
-> steering 文档起了什么作用？hooks 自动化了什么？MCP 接了什么？
-> 不要写没做过的事；评委要看的是你真实的用法。 -->
->
-> 框架说明见 `.kiro/specs/paper-reading-halloween/`（requirements / design / tasks）
-> 和 `.kiro/steering/product.md`；保存时自动检查见 `.kiro/hooks/`。
+这个项目按 Kiro 的 spec-driven 流程组织，仓库根目录的 `.kiro/` 就是证明：
+
+- **Spec**：`.kiro/specs/paper-reading-halloween/` 里有 `requirements.md`（19 条需求）、`design.md`（架构与主题切换设计）和 `tasks.md`（分阶段任务清单），先定需求和设计再动手，换装只改表现层，不动阅读逻辑。
+- **Steering**：`.kiro/steering/product.md` 定了产品原则：原文优先、评注不等于作者原话、五色高亮固定、绝不用占位图、换装只是表现层。
+- **Hooks**：`.kiro/hooks/format-on-save.json` 配了保存时自动检查，跑 `scripts/check.sh` 验 JS 语法、五色高亮类名、`.kiro/` 是否在位和交付物是否齐全。
+
+Kiro IDE 是主力工具，用它按上面这套 spec、steering、hooks 来做这个万圣节换装版。
 
 ## 项目结构
 
