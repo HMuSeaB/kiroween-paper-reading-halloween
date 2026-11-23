@@ -82,7 +82,22 @@ let activeFilters = new Set(HIGHLIGHT_TYPES);
 let favOnly = false;
 let favourites = new Set(store.get('prh-favourites', []));
 let personalNotes = store.get('prh-notes', {});
-let shortPosts = store.get('prh-shortposts', []);
+/* One lightweight pre-loaded short-post example (main post only, no replies).
+   Seeded only when the user has never saved/deleted short posts: once the
+   localStorage key exists (even as an empty list after deleting the example),
+   it is never re-seeded, so deleting it is permanent. */
+const SAMPLE_SHORT_POSTS = [
+  {
+    text: 'Melatonin in drinking water restored DNMT expression in obese mouse oocytes — abnormal methylation fell by about half, and the granddaughters\u2019 fertility came back close to control. A small molecule, a transgenerational effect.',
+    summary: '褪黑素让肥胖小鼠卵母细胞的异常甲基化减半，孙代生育力接近对照。',
+    source: '示例短帖（演示用 · 主帖全文，未追评论区）',
+  },
+];
+let shortPosts = store.get('prh-shortposts', null);
+if (shortPosts === null) {
+  shortPosts = SAMPLE_SHORT_POSTS.map((sp) => ({ ...sp }));
+  store.set('prh-shortposts', shortPosts);
+}
 
 /* ---- Helpers ---- */
 const $ = (sel) => document.querySelector(sel);

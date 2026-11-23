@@ -29,7 +29,7 @@ body.halloween {
   --accent: #ff8c1a;
   --accent-soft: #3a2410;
   --shadow: rgba(0, 0, 0, 0.45);
-  --hl-argument: #8a6d00;
+  --hl-argument: #7a6000;
   --hl-concept: #1d5f7a;
   --hl-evidence: #2f6b2a;
   --hl-concession: #6b3fa0;
@@ -200,4 +200,14 @@ footer { text-align: center; color: var(--muted); font-size: 0.9rem; padding: 20
   .para { grid-template-columns: 1fr; }
   .para-left { border-right: 0; border-bottom: 1px solid var(--border); }
   .topbar { padding: 14px 16px; }
+  .brand h1 { font-size: 1.25rem; }
+  .brand-mark { font-size: 1.6rem; }
+  .subtitle { font-size: 0.85rem; }
+}
+
+@media (max-width: 480px) {
+  main { padding: 14px 12px 32px; }
+  .top-actions .btn { padding: 8px 12px; }
+  .para-left, .para-right { padding: 14px 16px; }
+  .legend-note { margin-left: 0; }
 }

@@ -28,26 +28,48 @@ work before Devpost submission (see README for the full list).
 
 ## Phase 2 — Polish with Kiro (before submission)
 
-- [ ] 2.1 Run the app in Kiro IDE; fix any rendering issue on mobile width
-        (760px breakpoint) and in original-only mode
-- [ ] 2.2 Tune the night theme: check highlight contrast in both themes
-        with a real paper, not just the sample
-- [ ] 2.3 Add one more sample: a short tweet import pre-loaded as an
-        example short-post card (optional — only if it stays lightweight)
-- [ ] 2.4 Fill in the "How Kiro was used" section of README.md with real
-        usage (IDE / CLI / Crew, specs, steering, hooks, MCP — only what
-        was actually used)
-- [ ] 2.5 Run `scripts/check.sh` (see `.kiro/hooks/README.md`) before each commit
+- [x] 2.1 Mobile rendering fixed and verified in real headless Chromium
+        (2026-11-23): no horizontal overflow at 390 / 760 / 1280 px;
+        dual columns already stacked at ≤760 px; tightened the topbar
+        (smaller brand at ≤760 px) and paddings at ≤480 px. Topbar height
+        390 px: 171 → 163 px; 760 px: 147 → 80 px. Original-only mode
+        verified at all three widths (translation + notes hidden, no overflow).
+- [x] 2.2 Night-theme contrast tuned (2026-11-23): measured all five
+        highlight colours in both themes. Day ratios 7.41–9.41 (unchanged).
+        Night argument was the weakest at 4.92, so its gold was darkened
+        #8a6d00 → #7a6000 (white-text ratio 4.92 → 6.00, now in line with
+        the other night colours 6.45–7.55). Palette otherwise unchanged.
+- [x] 2.3 Pre-loaded short-post example added (2026-11-23): one tweet-style
+        card (melatonin / DNMT, main post only + one-sentence summary),
+        seeded only when no short-posts key exists in localStorage; deleting
+        it is permanent (verified: delete → 0 cards, reload → still 0).
+        It lives below the importer and does not touch the sample paper flow
+        (paragraph count still 5 on load).
+- [x] 2.4 "How Kiro was used" section of README.md filled in (2026-11-23,
+        spec / steering / hooks as they exist in .kiro/; no unused CLI /
+        Crew / MCP claims).
+- [x] 2.5 `scripts/check.sh` run after the changes: OK, all checks passed
+        (2026-11-23). See OPTIMIZATION.md for the full verification log.
 
 ## Phase 3 — Ship (Devpost submission, deadline 2026-12-05 06:00 Beijing)
 
-- [ ] 3.1 Create the public GitHub repo and push this directory
-        (do NOT add `.kiro/` to `.gitignore`; the root must contain it)
-- [ ] 3.2 Deploy the static files to a public URL (Cloudflare Pages /
-        GitHub Pages / Vercel) and verify the live link
-- [ ] 3.3 Record a demo video (< 3 min, public on YouTube) showing:
-        the sample paper, the costume switch, a colour filter,
-        original-only mode, and one import
+- [x] 3.1 Public GitHub repo created and pushed:
+        https://github.com/HMuSeaB/kiroween-paper-reading-halloween
+        (main, commit 3b067c7, 14 text files incl. .kiro/; demo mp4 is
+        binary and was not pushed). NOTE: the Phase 2 changes in this
+        round (styles.css / app.js / tasks.md / OPTIMIZATION.md) are
+        local only and have NOT been pushed yet — push before submitting.
+- [x] 3.2 Deployed to a public URL and verified:
+        https://hmuseab.github.io/kiroween-paper-reading-halloween/
+        (GitHub Pages, verified 2026-11-23 16:43). NOTE: Pages serves the
+        last pushed commit, so re-verify after pushing the Phase 2 changes.
+- [x] 3.3 Demo video recorded (< 3 min, public on YouTube):
+        https://www.youtube.com/watch?v=mCnUCNSYZaQ (59 s).
+        NOTE: the video still accurately shows the app — the Phase 2
+        changes do not alter any flow it demonstrates (costume switch,
+        colour filter, original-only, import all unchanged in behaviour);
+        the new pre-loaded short-post card appears only below the importer
+        and is not shown in the video. Re-recording is optional.
 - [ ] 3.4 Write the Devpost submission: category Costume Contest,
         public repo URL, working app URL, text description, demo video
         URL, and the Kiro write-up (how Kiro was used)
