@@ -1,0 +1,3 @@
+# local junk only — .kiro/ is required by Devpost and must NEVER be ignored
+.DS_Store
+node_modules/

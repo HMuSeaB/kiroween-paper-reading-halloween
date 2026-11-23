@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>论文阅读 · 万圣节换装版 — Paper Reading, Halloween Costume</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">🎃</span>
+    <div>
+      <h1>论文阅读 <span class="brand-en">Paper Reading</span></h1>
+      <p class="subtitle">双栏批注 · 双语对照 · 五色高亮 — Halloween Costume Edition</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="costumeBtn" class="btn costume-btn" type="button" aria-pressed="false">🎃 万圣节换装</button>
+    <button id="originalBtn" class="btn" type="button" aria-pressed="false">原文模式</button>
+  </div>
+</header>
+
+<div class="halloween-sky" aria-hidden="true">
+  <span class="moon">🌕</span>
+  <span class="bat bat-1">🦇</span>
+  <span class="bat bat-2">🦇</span>
+  <span class="bat bat-3">🦇</span>
+  <span class="pumpkin-float">🎃</span>
+</div>
+
+<main>
+  <section class="toolbar" aria-label="阅读工具">
+    <div class="filter-group" id="colorFilters">
+      <span class="filter-label">按颜色筛选：</span>
+      <button class="chip hl-argument" data-filter="argument" type="button" aria-pressed="true">论点</button>
+      <button class="chip hl-concept" data-filter="concept" type="button" aria-pressed="true">概念</button>
+      <button class="chip hl-evidence" data-filter="evidence" type="button" aria-pressed="true">证据</button>
+      <button class="chip hl-concession" data-filter="concession" type="button" aria-pressed="true">让步</button>
+      <button class="chip hl-method" data-filter="method" type="button" aria-pressed="true">方法</button>
+      <button class="chip chip-all" id="showAllBtn" type="button">全部显示</button>
+    </div>
+    <label class="fav-only"><input type="checkbox" id="favOnly"> 只看收藏</label>
+    <span class="count" id="paraCount"></span>
+  </section>
+
+  <section class="legend" aria-label="高亮图例">
+    <span><i class="swatch hl-argument"></i>论点 Argument</span>
+    <span><i class="swatch hl-concept"></i>概念 Concept</span>
+    <span><i class="swatch hl-evidence"></i>证据 Evidence</span>
+    <span><i class="swatch hl-concession"></i>让步 Concession</span>
+    <span><i class="swatch hl-method"></i>方法 Method</span>
+    <span class="legend-note">高亮只标作者原话；评注是 AI 推断，两者分开。</span>
+  </section>
+
+  <section class="reader" id="reader" aria-label="论文阅读区">
+    <!-- paragraphs rendered by app.js -->
+  </section>
+
+  <section class="skeleton" aria-label="全文逻辑骨架">
+    <h2>全文逻辑骨架 <span class="en">Logic Skeleton</span></h2>
+    <ol id="skeletonList"></ol>
+  </section>
+
+  <section class="importer" aria-label="导入">
+    <h2>导入论文 / 短帖</h2>
+    <div class="import-grid">
+      <div class="import-box">
+        <h3>贴入论文文本</h3>
+        <p class="hint">按空行分段，粘贴后按段落显示，可逐段写笔记、收藏。暂不支持直接上传 PDF，请贴文本。</p>
+        <textarea id="pasteText" rows="5" placeholder="粘贴论文文本（英文或中文）……"></textarea>
+        <button id="pasteBtn" class="btn primary" type="button">导入为新段落</button>
+      </div>
+      <div class="import-box">
+        <h3>轻量导入推文 / 短帖</h3>
+        <p class="hint">只取主帖全文，不追评论区。贴链接或正文，生成一张短帖卡 + 一句话摘要。</p>
+        <textarea id="tweetText" rows="5" placeholder="粘贴推文链接或正文……"></textarea>
+        <button id="tweetBtn" class="btn primary" type="button">导入短帖</button>
+      </div>
+      <div class="import-box">
+        <h3>给段落加媒体</h3>
+        <p class="hint">YouTube 链接用官方嵌入；图片/视频直链直接显示；取不到的媒体只做链接卡，绝不用占位图。</p>
+        <label>段落编号 <input id="mediaPara" type="number" min="1" value="1"></label>
+        <input id="mediaUrl" type="url" placeholder="https://…（YouTube / 图片 / 视频 / 其他链接）">
+        <button id="mediaBtn" class="btn primary" type="button">添加到段落</button>
+      </div>
+    </div>
+    <div id="shortPosts" class="short-posts" aria-label="导入的短帖"></div>
+  </section>
+</main>
+
+<footer>
+  <p>论文阅读 · 万圣节换装版 — Kiroween 2026 · Costume Contest · Built with Kiro (spec-driven) · MIT License</p>
+  <p class="foot-note">示例论文为演示用的公开摘要改写段落；高亮颜色与评注均为阅读辅助，不代表原文作者的标注。</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
